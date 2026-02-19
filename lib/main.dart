@@ -73,12 +73,13 @@ class _AuthCheckState extends State<AuthCheck> {
 
   @override
   Widget build(BuildContext context) {
-    if (_isLoading)
+    if (_isLoading) {
       return const Scaffold(
         body: Center(
           child: CircularProgressIndicator(color: Color(0xFF00D09C)),
         ),
       );
+    }
     if (myId != null) return HomeScreen(myId: myId!);
     return const LoginScreen();
   }
@@ -387,10 +388,10 @@ class _ChatScreenState extends State<ChatScreen> {
         .doc(widget.chatId)
         .collection('messages')
         .add({
-          'text': _msgController.text.trim(),
-          'senderId': widget.myId,
-          'timestamp': FieldValue.serverTimestamp(),
-        });
+      'text': _msgController.text.trim(),
+      'senderId': widget.myId,
+      'timestamp': FieldValue.serverTimestamp(),
+    });
     _msgController.clear();
   }
 
@@ -428,12 +429,13 @@ class _ChatScreenState extends State<ChatScreen> {
                     .orderBy('timestamp', descending: true)
                     .snapshots(),
                 builder: (context, snapshot) {
-                  if (!snapshot.hasData)
+                  if (!snapshot.hasData) {
                     return const Center(
                       child: CircularProgressIndicator(
                         color: Color(0xFF00D09C),
                       ),
                     );
+                  }
 
                   var msgs = snapshot.data!.docs;
                   return ListView.builder(
