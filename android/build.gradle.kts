@@ -1,3 +1,14 @@
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        // لاحظ الأقواس وعلامات التنصيص المزدوجة لأنها لغة Kotlin
+        classpath("com.google.gms:google-services:4.4.0") 
+    }
+}
+
 allprojects {
     repositories {
         google()
