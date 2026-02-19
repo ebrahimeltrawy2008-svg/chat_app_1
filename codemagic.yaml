@@ -1,0 +1,18 @@
+workflows:
+  android-workflow:
+    name: Android Workflow
+    max_build_duration: 30
+    instance_type: mac_mini_m1
+    scripts:
+      - name: Get Flutter packages
+        script: |
+          flutter packages pub get
+      - name: Build Android APK
+        script: |
+          flutter build apk --release --no-pub
+    artifacts:
+      - build/app/outputs/flutter-apk/*.apk
+    publishing:
+      email:
+        recipients:
+          - ايميلك@gmail.com # ضع ايميلك هنا ليصلك الرابط عليه
